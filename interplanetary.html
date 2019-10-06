@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="soul.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Link Budget</title>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Link Budget Calculator</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="index.html">Home </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Interplanetary <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
+
+<div class="container mt-3 ">
+  <h1>Interplanetary link budget</h1>
+
+  <form id = "calculatorForm" class="mt-4">
+      <h5>Spacecraft</h5><hr>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="inputEmail4">Transmitter power <i>[W]</i></label>
+        <input type="text" autocomplete="off" class="form-control" id="P" placeholder="P">
+        <small id="emailHelp" class="form-text text-muted">Extra info</small>
+      </div>
+        <div class="form-group col-md-2">
+        <label for="inputEmail4">Loss factor transmitter</label>
+        <input type="text" autocomplete="off" class="form-control" id="Lt" placeholder="L_t">
+      </div>
+        <div class="form-group col-md-2">
+        <label for="inputEmail4">Antenna diameter </label>
+        <input type="text" autocomplete="off" class="form-control" id="inputEmail4" placeholder="Number1">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputPassword4">Second Number</label>
+        <input type="text" autocomplete="off" class="form-control" id="inputPassword4" placeholder="Number2">
+      </div>
+    </div>
+  <div class="form-row">
+      <div class="form-group col-md-2">
+<!--        <label for="inputEmail4"> <i>[W]</i> </label>-->
+        <input type="text" autocomplete="off" class="form-control" id="P" placeholder="P">
+        <small id="emailHelp" class="form-text text-muted">Transmitter power [W]</small>
+      </div>
+        <div class="form-group col-md-2">
+<!--        <label for="inputEmail4"></label>-->
+        <input type="text" autocomplete="off" class="form-control" id="Lt" placeholder="D_t">
+            <small id="emailHelp" class="form-text text-muted">Sending Antenna diameter [m]</small>
+      </div>
+        <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="inputEmail4" placeholder="Number1">
+        <small id="emailHelp" class="form-text text-muted">Sending pointing offset [m]</small>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputPassword4">Second Number</label>
+        <input type="text" autocomplete="off" class="form-control" id="inputPassword4" placeholder="Number2">
+      </div>
+    </div>
+    <h5>Ground station</h5><hr>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputEmail4">Transmitter power <i>[W]</i></label>
+        <input type="text" autocomplete="off" class="form-control" id="P" placeholder="P">
+        <small id="emailHelp" class="form-text text-muted">Extra info</small>
+      </div>
+        <div class="form-group col-md-3">
+        <label for="inputEmail4">Loss factor transmitter</label>
+        <input type="text" autocomplete="off" class="form-control" id="Lt" placeholder="L_t">
+      </div>
+        <div class="form-group col-md-3">
+        <label for="inputEmail4">Antenna diameter </label>
+        <input type="text" autocomplete="off" class="form-control" id="inputEmail4" placeholder="Number1">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Second Number</label>
+        <input type="text" autocomplete="off" class="form-control" id="inputPassword4" placeholder="Number2">
+      </div>
+    </div>
+  <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputEmail4">Transmitter power </label>
+        <input type="text" autocomplete="off" class="form-control" id="P" placeholder="P">
+        <small id="emailHelp" class="form-text text-muted">Extra info</small>
+      </div>
+        <div class="form-group col-md-3">
+        <label for="inputEmail4">Loss factor transmitter</label>
+        <input type="text" autocomplete="off" class="form-control" id="Lt" placeholder="L_t">
+      </div>
+        <div class="form-group col-md-3">
+        <label for="inputEmail4">Antenna diameter </label>
+        <input type="text" autocomplete="off" class="form-control" id="inputEmail4" placeholder="Number1">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Second Number</label>
+        <input type="text" autocomplete="off" class="form-control" id="inputPassword4" placeholder="Number2">
+      </div>
+    </div>
+
+    <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate</button>
+    <button type="reset" class="btn btn-secundary" id="clear" >Clear</button>
+  </form>
+
+</div>
+
+<div class="container mt-4 hidden" id="divresults">
+<button type="button" id="closeresults" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+<table class="table table-bordered " id="tableresults">
+
+</table>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
