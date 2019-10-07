@@ -21,7 +21,11 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
 
 
-        const number1 = document.querySelector('#P').value;
+        const p = document.querySelector('#P').value;
+        const L_t = document.querySelector('#L_t').value;
+        const L_r = document.querySelector('#L_r').value;
+        const f = document.querySelector('#f').value;
+
         const table = document.querySelector('#tableresults')
         table.innerHTML =
             "<thead>\n" +
@@ -36,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () =>  {
             "    <tr>\n" +
             "      <th scope=\"row\">1</th>\n" +
             "      <td>Transmitter Power </td>\n" +
-            "      <td>"+ number1 +"</td>\n" +
+            "      <td>"+ p +"</td>\n" +
             "      <td>[W]</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
             "      <th scope=\"row\">2</th>\n" +
-            "      <td>Jacob</td>\n" +
-            "      <td>Thornton</td>\n" +
+            "      <td>L_t</td>\n" +
+            "      <td>"+L_t+"</td>\n" +
             "      <td>@fat</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
