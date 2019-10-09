@@ -24,19 +24,31 @@ document.addEventListener('DOMContentLoaded', () =>  {
         document.querySelector('#calculatorForm').onsubmit = () =>{
 
 
-        const p = db(document.querySelector('#P').value);
-        const L_t = db(document.querySelector('#L_t').value);
-        const L_r = db(document.querySelector('#L_r').value);
-        const f = document.querySelector('#f').value;
-        const c = 3*10**8;
+        const P_sc = parseFloat(db(document.querySelector('#P_sc').value));
+        const L_t = parseFloat(db(document.querySelector('#L_t').value));
+        const L_r = parseFloat(db(document.querySelector('#L_r').value));
+        const f = parseFloat(document.querySelector('#f').value);
+        const D_sc = parseFloat(document.querySelector('#D_sc').value);
+        const D_gs = parseFloat(document.querySelector('#D_gs').value);
+        const d_s =  parseFloat(document.querySelector('#d_s').value);
+        const theta_es =  parseFloat(document.querySelector('#theta_es').value);
+
+        const d_E = parseFloat(149.6*10**6);
+        const c = parseFloat(3*10**8);
         const Re = 6371;
 
-        const h = document.querySelector('#h').value;
-        var lambda =c/f;
-        var S = Math.sqrt((Re+h)**2 - Re**2)*10**3;
+        var lambda =c/(f*10**9);
+        var S =  Math.sqrt((d_E**2)+(d_s**2)-2*d_E*d_s*Math.cos(theta_es*Math.PI/180))*10**3;
+
         var L_s = db((lambda/(4*Math.PI*S))**2);
-        const table = document.querySelector('#tableuplink')
-        table.innerHTML =
+        var G_t_up = 20*Math.log10(D_sc)+20*Math.log10(f)+17.8;
+        var G_r_up = 20*Math.log10(D_gs)+20*Math.log10(f)+17.8;
+
+
+
+        const tableuplink = document.querySelector('#tableuplink');
+        const tabledownlink = document.querySelector('#tabledownlink');
+        tableuplink.innerHTML =
             "<thead>\n" +
             "    <tr>\n" +
             "      <th scope=\"col\">Symbol</th>\n" +
@@ -49,7 +61,96 @@ document.addEventListener('DOMContentLoaded', () =>  {
             "    <tr>\n" +
             "      <th scope=\"row\">P</th>\n" +
             "      <td>Transmitter Power </td>\n" +
-            "      <td>"+ p.toFixed(2) +"</td>\n" +
+            "      <td>"+ P_sc.toFixed(2) +"</td>\n" +
+            "      <td>[W]</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "      <th scope=\"row\">L_l</th>\n" +
+            "      <td>Loss factor transmitter</td>\n" +
+            "      <td>"+L_t.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">G_t</th>\n" +
+            "      <td>Transmitting antenna gain</td>\n" +
+            "      <td>"+ G_t_up.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">L_a</th>\n" +
+            "      <td>Transmission path loss</td>\n" +
+            "      <td>"+L_t.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">G_r</th>\n" +
+            "      <td>Receiving antenna gain</td>\n" +
+            "      <td>"+ G_r_up.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">L_s</th>\n" +
+            "      <td>Space loss</td>\n" +
+            "      <td>"+L_s.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">L_pr</th>\n" +
+            "      <td>Antenna pointing loss</td>\n" +
+            "      <td>"+L_t.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">L_r</th>\n" +
+            "      <td>Loss factor receiver</td>\n" +
+            "      <td>"+L_r.toFixed(2)+"</td>\n" +
+            "      <td>[-]</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">1/R</th>\n" +
+            "      <td>Required data rate</td>\n" +
+            "      <td>"+L_t.toFixed(2)+"</td>\n" +
+            "      <td>[bit/s]^-1</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">1/k</th>\n" +
+            "      <td>Boltzmann constant</td>\n" +
+            "      <td>"+f*2+"</td>\n" +
+            "      <td>[J/K]^-1</td>\n" +
+            "    </tr>\n" +
+
+            "    <tr>\n" +
+            "      <th scope=\"row\">1/T_s</th>\n" +
+            "      <td>System noise temperature</td>\n" +
+            "      <td>"+S+"</td>\n" +
+            "      <td>[K]^-1</td>\n" +
+            "    </tr>\n" +
+
+            "  </tbody>";
+
+        tabledownlink.innerHTML =
+            "<thead>\n" +
+            "    <tr>\n" +
+            "      <th scope=\"col\">Symbol</th>\n" +
+            "      <th scope=\"col\">Variable</th>\n" +
+            "      <th scope=\"col\">Value [db]</th>\n" +
+            "      <th scope=\"col\">Unit</th>\n" +
+            "    </tr>\n" +
+            "  </thead>\n" +
+            "  <tbody>\n" +
+            "    <tr>\n" +
+            "      <th scope=\"row\">P</th>\n" +
+            "      <td>Transmitter Power </td>\n" +
+            "      <td>"+ P_sc.toFixed(2) +"</td>\n" +
             "      <td>[W]</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
