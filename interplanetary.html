@@ -78,7 +78,38 @@
         <label for="inputPassword4">Antenna diameter S/C <i>[m]</i> </label>
       </div>
     </div>
+  <div class="form-row">
+      <div class="form-group col-md-2">
 
+        <input type="text" autocomplete="off" class="form-control" id="h" placeholder="h">
+         <label for="inputEmail4">Orbit Altitude <i>[km]</i></label>
+      </div>
+        <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="L_t" placeholder="L_t">
+        <label for="inputEmail4">Enlogation angle <i>[deg]</i></label>
+
+      </div>
+        <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="L_r" placeholder="L_r">
+          <label for="inputEmail4">Pointing offset angle S/C <i>[deg]</i> </label>
+
+        </div>
+      <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="f" placeholder="f">
+        <label for="inputPassword4">Required uplink data rate <i>[bit/s]</i> </label>
+      </div>
+
+
+        <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="f_up_f" placeholder="f_up/f">
+        <label for="inputPassword4">Payload swath width angle <i>[deg]</i> </label>
+      </div>
+
+        <div class="form-group col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="D_t" placeholder="D_t">
+        <label for="inputPassword4">Payload pixel size <i>[arcmin]</i> </label>
+      </div>
+    </div>
 
     <h5>Ground station</h5><hr>
     <div class="form-row">
@@ -120,19 +151,36 @@
       </div>
     </div>
 
-    <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate</button>
+    <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate </button>
     <button type="reset" class="btn btn-secundary" id="clear" >Clear</button>
   </form>
 
 </div>
 
 <div class="container mt-4 hidden" id="divresults">
-<button type="button" id="closeresults" class="close" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-<table class="table table-bordered " id="tableresults">
+    <button type="button" id="closeresults" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <div class="row">
 
-</table>
+
+      <div class="col-md-6">
+      <table class="table table-bordered "  style=" float: left;" id="tableuplink">
+      </table>
+      </div>
+    <div class="col-md-6">
+      <table class="table table-bordered " style=" float: left;" id="tabledownlink">
+      <thead>
+        <tr>
+          <th scope=\"col\">Symbol</th>
+          <th scope=\"col\">Variable</th>
+          <th scope=\"col\">Value [db]</th>
+          <th scope=\"col\">Unit</th>
+        </tr>
+      </thead>
+      </table>
+      </div>
+    </div>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
