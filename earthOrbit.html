@@ -1,10 +1,187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="soul.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Link Budget</title>
+
 </head>
+
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Link Budget Calculator</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="index.html">Home </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="interplanetary.html">Interplanetary </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Earth orbiting <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
+
+<div class="container mt-3 pb-2">
+  <h1>Earth orbiting link budget</h1>
+
+  <form id = "calculatorFormEarth" class="mt-4">
+      <h5>Spacecraft</h5><hr>
+    <div class="form-row">
+      <div class="form-group col-6 col-md-2">
+
+        <input type="text" autocomplete="off" class="form-control" id="P_sc" placeholder="P_sc">
+         <label for="P_sc">Transmitter power S/C<i>[W]</i></label>
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="L_t" placeholder="L_t">
+        <label for="L_t">Loss factor transmitter <i>[-]</i></label>
+
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="L_r" placeholder="L_r">
+          <label for="L_r">Loss factor receiver <i>[-]</i> </label>
+
+        </div>
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="f" placeholder="f">
+        <label for="f">Downlink Frequency <i>[GHz]</i> </label>
+      </div>
+
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="f_up_f" placeholder="f_up/f">
+        <label for="f_up_f">Turn around ratio <i>[-]</i> </label>
+      </div>
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="D_sc" placeholder="D_sc">
+        <label for="D_sc">Antenna diameter S/C <i>[m]</i> </label>
+      </div>
+    </div>
+  <div class="form-row">
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="h" placeholder="h">
+         <label for="d_s">Orbit altitude <i>[km]</i></label>
+      </div>
+
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="theta_es" placeholder="theta_es">
+        <label for="theta_es">Elongation angle <i>[deg]</i></label>
+
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="e_t" placeholder="e_t">
+          <label for="e_t">Pointing offset angle S/C <i>[deg]</i> </label>
+
+        </div>
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="R_up" placeholder="R_up">
+        <label for="R_up">Required uplink data rate <i>[bit/s]</i> </label>
+      </div>
+
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="S_W" placeholder="S_W">
+        <label for="S_W">Payload swath width angle <i>[m]</i> </label>
+      </div>
+
+
+    </div>
+
+<div class="form-row">
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="P_s" placeholder="P_s">
+        <label for="P_s">Payload pixel size <i>[arcmin]</i> </label>
+      </div>
+  <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="B_p" placeholder="B_p">
+         <label for="B_p">Payload bits per pixel <i>[-]</i></label>
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="D_c" placeholder="D_c">
+        <label for="D_c">Payload duty cycle <i>[%]</i></label>
+
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="T_DL" placeholder="T_DL">
+          <label for="T_DL">Payload downlink time <i>[hr/day]</i> </label>
+
+        </div>
+
+
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="P_gs" placeholder="P_gs">
+        <label for="D_sc">Transmitter Power GS <i>[W]</i> </label>
+      </div>
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="D_gs" placeholder="D_gs">
+        <label for="D_gs">Antenna diameter GS <i>[m]</i> </label>
+      </div>
+
+    </div>
+
+    <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate </button>
+    <button type="reset" class="btn btn-secundary" id="clear" >Clear</button>
+  </form>
+
+</div>
+
+<div class="container mt-4 hidden" id="divresults">
+    <button type="button" id="closeresults" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <div class="row">
+
+
+      <div class="col-md-6 mt-3">
+      <h3>Downlink Budget</h3>
+      <table class="table table-bordered mt-3"  style=" float: left;" id="tableuplink">
+      </table>
+      </div>
+    <div class="col-md-6 mt-3">
+      <h3>Uplink Budget</h3>
+      <table class="table table-bordered  mt-3" style=" float: left;" id="tabledownlink">
+      </table>
+      </div>
+    </div>
+</div>
+<div class="hidden">
+    <form id="calculatorForm"></form>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

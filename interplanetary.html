@@ -32,9 +32,10 @@
         <a class="nav-link" href="#">Interplanetary <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="earthOrbit.html">Earth orbiting</a>
       </li>
     </ul>
+
     <span class="navbar-text">
       Navbar text with an inline element
     </span>
@@ -80,42 +81,61 @@
     </div>
   <div class="form-row">
       <div class="form-group col-6 col-md-2">
-
         <input type="text" autocomplete="off" class="form-control" id="d_s" placeholder="d_s">
          <label for="d_s">Distance Spacecraft-Sun <i>[km]</i></label>
       </div>
+
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="d_s" placeholder="d_s">
+         <label for="d_s">Planet Radius <i>[km]</i></label>
+      </div>
+
         <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="theta_es" placeholder="theta_es">
-        <label for="theta_es">Enlogation angle <i>[deg]</i></label>
+        <label for="theta_es">Elongation angle <i>[deg]</i></label>
 
       </div>
         <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="L_r" placeholder="L_r">
-          <label for="inputEmail4">Pointing offset angle S/C <i>[deg]</i> </label>
+        <input type="text" autocomplete="off" class="form-control" id="e_t" placeholder="e_t">
+          <label for="e_t">Pointing offset angle S/C <i>[deg]</i> </label>
 
         </div>
       <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="f" placeholder="f">
-        <label for="inputPassword4">Required uplink data rate <i>[bit/s]</i> </label>
+        <input type="text" autocomplete="off" class="form-control" id="R_up" placeholder="R_up">
+        <label for="R_up">Required uplink data rate <i>[bit/s]</i> </label>
       </div>
 
 
         <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="f_up_f" placeholder="f_up/f">
-        <label for="inputPassword4">Payload swath width angle <i>[deg]</i> </label>
+        <input type="text" autocomplete="off" class="form-control" id="S_W" placeholder="S_W">
+        <label for="S_W">Payload swath width angle <i>[m]</i> </label>
       </div>
 
-        <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="D_t" placeholder="D_t">
-        <label for="inputPassword4">Payload pixel size <i>[arcmin]</i> </label>
-      </div>
+
     </div>
 
+<div class="form-row">
+
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="P_s" placeholder="P_s">
+        <label for="P_s">Payload pixel size <i>[arcmin]</i> </label>
+      </div>
+  <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="B_p" placeholder="B_p">
+         <label for="B_p">Payload bits per pixel <i>[-]</i></label>
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="D_c" placeholder="D_c">
+        <label for="D_c">Payload duty cycle <i>[%]</i></label>
+
+      </div>
+        <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="T_DL" placeholder="T_DL">
+          <label for="T_DL">Payload downlink time <i>[hr/day]</i> </label>
+
+        </div>
 
 
-    <h5>Ground station</h5><hr>
-
-  <div class="form-row">
       <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="P_gs" placeholder="P_gs">
         <label for="D_sc">Transmitter Power GS <i>[W]</i> </label>
@@ -126,14 +146,6 @@
         <label for="D_gs">Antenna diameter GS <i>[m]</i> </label>
       </div>
 
-    <div class="form-group col-md-3">
-        <label for="inputEmail4">Loss factor transmitter</label>
-        <input type="text" autocomplete="off" class="form-control" id="Lt" placeholder="L_t">
-      </div>
-      <div class="form-group col-md-3">
-        <label for="inputPassword4">Second Number</label>
-        <input type="text" autocomplete="off" class="form-control" id="inputPassword4" placeholder="Number2">
-      </div>
     </div>
 
     <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate </button>
@@ -150,16 +162,19 @@
 
 
       <div class="col-md-6 mt-3">
-      <h3>Uplink Budget</h3>
-      <table class="table table-bordered mt-3"  style=" float: left;" id="tableuplink">
+      <h3>Downlink Budget</h3>
+      <table class="table table-bordered table-hover mt-3"  style=" float: left;" id="tableuplink">
       </table>
       </div>
     <div class="col-md-6 mt-3">
-      <h3>Downlink Budget</h3>
-      <table class="table table-bordered  mt-3" style=" float: left;" id="tabledownlink">
+      <h3>Uplink Budget</h3>
+      <table class="table table-bordered table-hover mt-3" style=" float: left;" id="tabledownlink">
       </table>
       </div>
     </div>
+</div>
+<div class="hidden">
+    <form id="calculatorFormEarth"></form>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
