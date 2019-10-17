@@ -363,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
         var lambda =c/(f*10**9);
         var S =  Math.sqrt((d_E**2)+(d_s**2)-2*d_E*d_s*Math.cos(theta_es*Math.PI/180))*10**3;
-        alert(S)
         var alpha_half_t  = 21/(f * D_sc);
         var alpha_half_r = 21/(f *D_gs);
         var e_t_r = 0.1* alpha_half_r ;
@@ -396,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
         var Ps = aPS*h*10**3;
         var sw = 2*h*10**3*Math.tan(aS/2);
-        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -vEarth;
+        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -V_b;
         var RG = Bp*sw*Vground/Ps**2;
         var DR = RG*DC/Tdl;
 
