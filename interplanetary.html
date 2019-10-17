@@ -37,7 +37,7 @@
     </ul>
 
     <span class="navbar-text">
-      Navbar text with an inline element
+       <> with &#129505; by Group 5
     </span>
   </div>
 </nav>
@@ -80,26 +80,48 @@
     </div>
   <div class="form-row">
       <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="d_s" placeholder="d_s">
-         <label for="d_s">Distance Spacecraft-Sun <i>[km]</i></label>
+        <input type="text" autocomplete="off" class="form-control" id="d_s" placeholder="d_bs">
+         <label for="d_s">Distance Orbited body-Sun <i>[km]</i></label>
       </div>
 
       <div class="form-group col-6 col-md-2">
-        <input type="text" autocomplete="off" class="form-control" id="d_s" placeholder="d_s">
-         <label for="d_s">Planet Radius <i>[km]</i></label>
+        <input type="text" autocomplete="off" class="form-control" id="M" placeholder="M">
+         <label for="d_s">Orbited body Mass <i>[kg]</i></label>
+      </div>
+    <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="V_b" placeholder="V_b">
+         <label for="d_s">Orbited body rotational velocity <i>[m/s]</i></label>
       </div>
 
-        <div class="form-group col-6 col-md-2">
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="r_p" placeholder="r_p">
+         <label for="d_s">Orbited body Radius <i>[km]</i></label>
+      </div>
+
+      <div class="form-group col-6 col-md-2">
+        <input type="text" autocomplete="off" class="form-control" id="h" placeholder="h">
+         <label for="d_s">Orbit altitude <i>[km]</i></label>
+      </div>
+
+<div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="theta_es" placeholder="theta_es">
         <label for="theta_es">Elongation angle <i>[deg]</i></label>
 
       </div>
+
+
+
+
+    </div>
+
+<div class="form-row">
+
         <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="e_t" placeholder="e_t">
           <label for="e_t">Pointing offset angle S/C <i>[deg]</i> </label>
 
         </div>
-      <div class="form-group col-6 col-md-2">
+<div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="R_up" placeholder="R_up">
         <label for="R_up">Required uplink data rate <i>[bit/s]</i> </label>
       </div>
@@ -109,12 +131,6 @@
         <input type="text" autocomplete="off" class="form-control" id="S_W" placeholder="S_W">
         <label for="S_W">Payload swath width angle <i>[m]</i> </label>
       </div>
-
-
-    </div>
-
-<div class="form-row">
-
         <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="P_s" placeholder="P_s">
         <label for="P_s">Payload pixel size <i>[arcmin]</i> </label>
@@ -123,19 +139,24 @@
         <input type="text" autocomplete="off" class="form-control" id="B_p" placeholder="B_p">
          <label for="B_p">Payload bits per pixel <i>[-]</i></label>
       </div>
-        <div class="form-group col-6 col-md-2">
+
+<div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="D_c" placeholder="D_c">
         <label for="D_c">Payload duty cycle <i>[%]</i></label>
 
       </div>
+
+
+
+    </div>
+    <div class="form-row">
+
         <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="T_DL" placeholder="T_DL">
           <label for="T_DL">Payload downlink time <i>[hr/day]</i> </label>
 
         </div>
-
-
-      <div class="form-group col-6 col-md-2">
+        <div class="form-group col-6 col-md-2">
         <input type="text" autocomplete="off" class="form-control" id="P_gs" placeholder="P_gs">
         <label for="D_sc">Transmitter Power GS <i>[W]</i> </label>
       </div>
@@ -146,7 +167,6 @@
       </div>
 
     </div>
-
     <button type="submit"  class="btn btn-primary" id="bttncalculate" >Generate </button>
     <button type="reset" class="btn btn-secundary" id="clear" >Clear</button>
   </form>

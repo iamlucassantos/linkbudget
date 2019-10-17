@@ -31,22 +31,33 @@ document.addEventListener('DOMContentLoaded', () =>  {
         const h =  parseFloat(document.querySelector('#h').value);
         const f_change =  parseFloat(document.querySelector('#f_up_f').value);
         const e_t =  parseFloat(document.querySelector('#e_t').value);
-        const theta_es =  parseFloat(document.querySelector('#theta_es').value);
-        const B_p =  parseFloat(document.querySelector('#B_p').value);
-        const D_c =  parseFloat(document.querySelector('#D_c').value);
-        const T_DL =  parseFloat(document.querySelector('#T_DL').value);
+        const Bp =  parseFloat(document.querySelector('#B_p').value);
+        const DC =  parseFloat(document.querySelector('#D_c').value)/100;
+        const Tdl =  parseFloat(document.querySelector('#T_DL').value)/24;
+        const aPS =  parseFloat(document.querySelector('#P_s').value)* Math.PI/(60*180);
+        const aS =  parseFloat(document.querySelector('#S_W').value)*Math.PI/180;
 
         const d_E = parseFloat(149.6*10**6);
         const c = parseFloat(3*10**8);
         const Re = 6371;
+        const G = 6.67408e-11;
+        const M = 5.972e24;
+        const vEarth = 460;
+
         var k = 1.38*10**(-23);
         var f_down = f*f_change;
 
         var lambda =c/(f*10**9);
-        var S =  Math.sqrt((Re+h)**2-Re**2)*10**3;
+        var S =  Math.sqrt(((Re+h))**2-Re**2)*10**3;
         var alpha_half_t  = 21/(f * D_sc);
         var alpha_half_r = 21/(f *D_gs);
         var e_t_r = 0.1* alpha_half_r ;
+
+        var Ps = aPS*h*10**3;
+        var sw = 2*h*10**3*Math.tan(aS/2);
+        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -vEarth;
+        var RG = Bp*sw*Vground/Ps**2;
+        var DR = RG*DC/Tdl;
 
         if (f<2 && f>=0.2){
                 var T_up = 221
@@ -77,18 +88,18 @@ document.addEventListener('DOMContentLoaded', () =>  {
         var L_a = -0.5;
         const P_gs = parseFloat(db(document.querySelector('#P_gs').value));
         var L_s_down = db((lambda_down/(4*Math.PI*S))**2);
-        var G_t_down = 20*Math.log10(D_sc)+20*Math.log10(f_down)+17.8;
-        var G_r_down = 20*Math.log10(D_gs)+20*Math.log10(f_down)+17.8;
+        var G_t_down = 20*Math.log10(D_gs)+20*Math.log10(f_down)+17.8;
+        var G_r_down = 20*Math.log10(D_sc)+20*Math.log10(f_down)+17.8;
         var L_pr_down = -12*(e_t_r/alpha_half_t_down)**2 -12*(e_t/alpha_half_r_down)**2;
         var R = 0.01474;
 
         const tableuplink = document.querySelector('#tableuplink');
         const tabledownlink = document.querySelector('#tabledownlink');
 
-        var SNR_up = P_sc + L_t + G_t_up + L_a + G_r_up  + L_s + L_pr + L_r + db(1/R) + db(1/k) +db(1/T_up) ;
+        var SNR_up = P_sc + L_t + G_t_up + L_a + G_r_up  + L_s + L_pr + L_r + db(1/DR) + db(1/k) +db(1/T_up) ;
         var margin_up = SNR_up -10;
         var SNR_down = P_gs + L_t + G_t_down + L_a + G_r_down  + L_s_down + L_pr_down + L_r + db(1/R_down) + db(1/k) +db(1/T_down) ;
-        var margin_down = SNR_up -10;
+        var margin_down = SNR_down -10;
 
 
         tableuplink.innerHTML =
@@ -160,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             "    <tr>\n" +
             "      <th scope=\"row\">1/R</th>\n" +
             "      <td>Required data rate</td>\n" +
-            "      <td>"+db(1/R).toFixed(2)+"</td>\n" +
+            "      <td>"+db(1/DR).toFixed(2)+"</td>\n" +
             "      <td>[bit/s]^-1</td>\n" +
             "    </tr>\n" +
 
@@ -325,22 +336,34 @@ document.addEventListener('DOMContentLoaded', () =>  {
         const R_down = parseFloat(document.querySelector('#R_up').value);
         const D_sc = parseFloat(document.querySelector('#D_sc').value);
         const D_gs = parseFloat(document.querySelector('#D_gs').value);
-        const d_s =  parseFloat(document.querySelector('#d_s').value);
+        const d_ps =  parseFloat(document.querySelector('#d_s').value);
+        const r_p =  parseFloat(document.querySelector('#r_p').value);
+        const M =  parseFloat(document.querySelector('#M').value);
+        const V_b =  parseFloat(document.querySelector('#V_b').value);
+        const h =  parseFloat(document.querySelector('#h').value);
         const f_change =  parseFloat(document.querySelector('#f_up_f').value);
         const e_t =  parseFloat(document.querySelector('#e_t').value);
         const theta_es =  parseFloat(document.querySelector('#theta_es').value);
-        const B_p =  parseFloat(document.querySelector('#B_p').value);
-        const D_c =  parseFloat(document.querySelector('#D_c').value);
-        const T_DL =  parseFloat(document.querySelector('#T_DL').value);
+        const Bp =  parseFloat(document.querySelector('#B_p').value);
+        const DC =  parseFloat(document.querySelector('#D_c').value)/100;
+        const Tdl =  parseFloat(document.querySelector('#T_DL').value)/24;
+        const aPS =  parseFloat(document.querySelector('#P_s').value)* Math.PI/(60*180);
+        const aS =  parseFloat(document.querySelector('#S_W').value)*Math.PI/180;
 
+
+        var d_s = d_ps -h-r_p;
         const d_E = parseFloat(149.6*10**6);
         const c = parseFloat(3*10**8);
         const Re = 6371;
+        const G = 6.67408e-11;
+        const vEarth = 460;
+
         var k = 1.38*10**(-23);
         var f_down = f*f_change;
 
         var lambda =c/(f*10**9);
         var S =  Math.sqrt((d_E**2)+(d_s**2)-2*d_E*d_s*Math.cos(theta_es*Math.PI/180))*10**3;
+        alert(S)
         var alpha_half_t  = 21/(f * D_sc);
         var alpha_half_r = 21/(f *D_gs);
         var e_t_r = 0.1* alpha_half_r ;
@@ -371,10 +394,16 @@ document.addEventListener('DOMContentLoaded', () =>  {
         var alpha_half_r_down = 21/(f_down *D_sc);
         var lambda_down =c/(f_down*10**9);
 
+        var Ps = aPS*h*10**3;
+        var sw = 2*h*10**3*Math.tan(aS/2);
+        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -vEarth;
+        var RG = Bp*sw*Vground/Ps**2;
+        var DR = RG*DC/Tdl;
+
         const P_gs = parseFloat(db(document.querySelector('#P_gs').value));
         var L_s_down = db((lambda_down/(4*Math.PI*S))**2);
-        var G_t_down = 20*Math.log10(D_sc)+20*Math.log10(f_down)+17.8;
-        var G_r_down = 20*Math.log10(D_gs)+20*Math.log10(f_down)+17.8;
+        var G_t_down = 20*Math.log10(D_gs)+20*Math.log10(f_down)+17.8;
+        var G_r_down = 20*Math.log10(D_sc)+20*Math.log10(f_down)+17.8;
         var L_pr_down = -12*(e_t_r/alpha_half_t_down)**2 -12*(e_t/alpha_half_r_down)**2;
         var L_a = -0.5;
         var R = 0.01474;
@@ -382,10 +411,10 @@ document.addEventListener('DOMContentLoaded', () =>  {
         const tableuplink = document.querySelector('#tableuplink');
         const tabledownlink = document.querySelector('#tabledownlink');
 
-        var SNR_up = P_sc + L_t + G_t_up + L_a + G_r_up  + L_s + L_pr + L_r + db(1/R) + db(1/k) +db(1/T_up) ;
+        var SNR_up = P_sc + L_t + G_t_up + L_a + G_r_up  + L_s + L_pr + L_r + db(1/DR) + db(1/k) +db(1/T_up) ;
         var margin_up = SNR_up -10;
         var SNR_down = P_gs + L_t + G_t_down + L_a + G_r_down  + L_s_down + L_pr_down + L_r + db(1/R_down) + db(1/k) +db(1/T_down) ;
-        var margin_down = SNR_up -10;
+        var margin_down = SNR_down -10;
         tableuplink.innerHTML =
             "<thead>\n" +
             "    <tr>\n" +
@@ -455,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
             "    <tr>\n" +
             "      <th scope=\"row\">1/R</th>\n" +
             "      <td>Required data rate</td>\n" +
-            "      <td>"+db(1/R).toFixed(2)+"</td>\n" +
+            "      <td>"+db(1/DR).toFixed(2)+"</td>\n" +
             "      <td>[bit/s]^-1</td>\n" +
             "    </tr>\n" +
 
