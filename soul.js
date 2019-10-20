@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
         var Ps = aPS*h*10**3;
         var sw = 2*h*10**3*Math.tan(aS/2);
-        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -vEarth;
+        var Vground = Math.sqrt(G*M/((h+Re)*10**3))*r_p/(r_p+h);
         var RG = Bp*sw*Vground/Ps**2;
         var DR = RG*DC/Tdl;
 
@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
         var Ps = aPS*h*10**3;
         var sw = 2*h*10**3*Math.tan(aS/2);
-        var Vground = Math.sqrt(G*M/((h+Re)*10**3)) -V_b;
+        var Vground = Math.sqrt(G*M/((h+Re)*10**3))*r_p/(r_p+h);
         var RG = Bp*sw*Vground/Ps**2;
         var DR = RG*DC/Tdl;
 
